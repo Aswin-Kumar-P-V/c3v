@@ -10,7 +10,7 @@ export default function Footer() {
         <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.65rem", color: "var(--muted)", letterSpacing: "0.15em", textTransform: "uppercase" }}>
           © {year} C³V Agency. All rights reserved.
         </span>
-        <div style={{ display: "flex", gap: "2rem" }}>
+        {/* <div style={{ display: "flex", gap: "2rem" }}>
           {["GitHub", "LinkedIn", "Twitter"].map((s) => (
             <a key={s} href="#"
               style={{ fontFamily: "var(--font-mono)", fontSize: "0.65rem", color: "var(--muted)", textDecoration: "none", letterSpacing: "0.1em", textTransform: "uppercase", transition: "color 0.2s" }}
@@ -18,7 +18,7 @@ export default function Footer() {
               onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "var(--muted)")}
             >{s}</a>
           ))}
-        </div>
+        </div> */}
       </div>
     </footer>
   );

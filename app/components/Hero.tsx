@@ -79,7 +79,7 @@ export default function Hero() {
             fontFamily: "var(--font-mono)", fontSize: "0.7rem",
             letterSpacing: "0.25em", color: "var(--muted)", textTransform: "uppercase",
           }}>
-            Software Agency — Est. 2025
+            Software Agency — Est. 2026
           </span>
         </div>
 
