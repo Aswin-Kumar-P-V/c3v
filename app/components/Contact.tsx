@@ -1,14 +1,34 @@
 "use client";
 import { useState } from "react";
+import { contactAction } from "../actions/contact";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", project: "", message: "" });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  const response = await contactAction({
+    name: form.name,
+    email: form.email,
+    project: form.project,
+    message: form.message,
+  });
+
+  if (response.success) {
     setSent(true);
-  };
+
+    setForm({
+      name: "",
+      email: "",
+      project: "",
+      message: "",
+    });
+  } else {
+    alert(response.message);
+  }
+};
 
   const inputStyle = {
     width: "100%", background: "var(--surface)", border: "1px solid var(--border)",
@@ -39,8 +59,8 @@ export default function Contact() {
 
           <div className="contact-info">
             {[
-              { label: "Email", value: "hello@c3v.dev" },
-              { label: "Based in", value: "Kerala, India" },
+              { label: "Email", value: "c3v.solutions@gmail.com" },
+              // { label: "Based in", value: "Kerala, India" },
               { label: "Availability", value: "Open for new projects" },
             ].map((item) => (
               <div key={item.label}>
@@ -75,14 +95,14 @@ export default function Contact() {
                   <input type="text" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} style={inputStyle}
                     onFocus={(e) => ((e.target as HTMLElement).style.borderColor = "var(--accent)")}
                     onBlur={(e) => ((e.target as HTMLElement).style.borderColor = "var(--border)")}
-                    placeholder="John Doe" />
+                     />
                 </div>
                 <div>
                   <label style={labelStyle}>Email Address</label>
                   <input type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} style={inputStyle}
                     onFocus={(e) => ((e.target as HTMLElement).style.borderColor = "var(--accent)")}
                     onBlur={(e) => ((e.target as HTMLElement).style.borderColor = "var(--border)")}
-                    placeholder="you@company.com" />
+                     />
                 </div>
                 <div>
                   <label style={labelStyle}>Project Type</label>
@@ -106,7 +126,7 @@ export default function Contact() {
                     style={{ ...inputStyle, resize: "vertical" }}
                     onFocus={(e) => ((e.target as HTMLElement).style.borderColor = "var(--accent)")}
                     onBlur={(e) => ((e.target as HTMLElement).style.borderColor = "var(--border)")}
-                    placeholder="What are you building? What problem does it solve?" />
+                     />
                 </div>
                 <button type="submit"
                   style={{
