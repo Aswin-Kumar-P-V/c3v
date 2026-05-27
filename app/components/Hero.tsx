@@ -201,7 +201,7 @@ export default function Hero() {
     <PopupButton
       url="https://calendly.com/c3v-solutions/30min"
       rootElement={rootElement}
-      text="Book a Free Call"
+      text="Book a Call"
       styles={{
         backgroundColor: "transparent",
         border: "none",
