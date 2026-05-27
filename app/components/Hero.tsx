@@ -1,8 +1,15 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { PopupButton } from "react-calendly";
 
 export default function Hero() {
   const gridRef = useRef<HTMLDivElement>(null);
+
+  const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setRootElement(document.body);
+  }, []);
 
   // useEffect(() => {
   //   const grid = gridRef.current;
@@ -105,10 +112,7 @@ export default function Hero() {
         }}>THAT MOVES.</h1>
 
         {/* Sub-content row */}
-        <div style={{
-          display: "flex", flexWrap: "wrap", gap: "2rem",
-          marginTop: "3rem", alignItems: "flex-end",
-        }}>
+        <div className="flex lg:flex-row flex-col flex-wrap gap-8 lg:items-start" style={{ marginTop: "3rem" }}>
           <p style={{
             fontFamily: "var(--font-body)", fontSize: "1rem",
             color: "var(--muted)", maxWidth: "380px",
@@ -118,25 +122,103 @@ export default function Hero() {
             engineers and designers who obsess over software craft — from web apps to AI integrations.
           </p>
 
-          <div className="cta-row">
-            <a
-              href="#contact"
-              style={{
-                fontFamily: "var(--font-mono)", fontSize: "0.75rem",
-                letterSpacing: "0.15em", textTransform: "uppercase",
-                padding: "1rem 2rem", background: "var(--accent)",
-                color: "#000", textDecoration: "none", fontWeight: 700,
-                transition: "transform 0.2s, box-shadow 0.2s", display: "inline-block",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = "translate(-3px, -3px)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "4px 4px 0 var(--accent2)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = "none";
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
-              }}
-            >Start a Project</a>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div
+  style={{
+    fontFamily: "var(--font-mono)",
+    fontSize: "0.75rem",
+    letterSpacing: "0.15em",
+    textTransform: "uppercase",
+    padding: "1rem 2rem",
+    border: "1px solid rgba(0,136,255,0.45)",
+    background:
+      "linear-gradient(135deg, rgba(0,136,255,0.18), rgba(0,136,255,0.05))",
+    color: "#fff",
+    transition: "all 0.35s cubic-bezier(0.22, 1, 0.36, 1)",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "pointer",
+    width: "100%",
+    height: "fit-content",
+    alignSelf: "flex-start",
+    position: "relative",
+    overflow: "hidden",
+    boxShadow:
+      "0 0 30px rgba(0,136,255,0.18), inset 0 0 20px rgba(255,255,255,0.03)",
+    backdropFilter: "blur(10px)",
+    WebkitBackdropFilter: "blur(10px)",
+  }}
+  onMouseEnter={(e) => {
+    const target = e.currentTarget as HTMLElement;
+
+    target.style.transform = "translateY(-4px) scale(1.02)";
+    target.style.boxShadow =
+      "0 12px 40px rgba(0,136,255,0.35), 0 0 20px rgba(0,136,255,0.2)";
+    target.style.borderColor = "rgba(255,255,255,0.75)";
+    target.style.background =
+      "linear-gradient(135deg, rgba(0,136,255,0.28), rgba(0,136,255,0.08))";
+  }}
+  onMouseLeave={(e) => {
+    const target = e.currentTarget as HTMLElement;
+
+    target.style.transform = "translateY(0) scale(1)";
+    target.style.boxShadow =
+      "0 0 30px rgba(0,136,255,0.18), inset 0 0 20px rgba(255,255,255,0.03)";
+    target.style.borderColor = "rgba(0,136,255,0.45)";
+    target.style.background =
+      "linear-gradient(135deg, rgba(0,136,255,0.18), rgba(0,136,255,0.05))";
+  }}
+>
+  {/* Glow effect */}
+  <div
+    style={{
+      position: "absolute",
+      inset: "-40%",
+      background:
+        "linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%)",
+      transform: "rotate(12deg)",
+      animation: "shine 4s linear infinite",
+      pointerEvents: "none",
+    }}
+  />
+
+  {/* Live indicator */}
+  <div
+    style={{
+      width: "8px",
+      height: "8px",
+      borderRadius: "999px",
+      background: "#00ff88",
+      boxShadow: "0 0 10px #00ff88",
+      marginRight: "12px",
+      animation: "pulseDot 1.8s infinite",
+      flexShrink: 0,
+    }}
+  />
+
+  {rootElement && (
+    <PopupButton
+      url="https://calendly.com/c3v-solutions/30min"
+      rootElement={rootElement}
+      text="Book a Free Call"
+      styles={{
+        backgroundColor: "transparent",
+        border: "none",
+        padding: 0,
+        margin: 0,
+        color: "inherit",
+        fontSize: "inherit",
+        fontWeight: "inherit",
+        fontFamily: "inherit",
+        letterSpacing: "inherit",
+        textTransform: "inherit",
+        cursor: "pointer",
+        width: "100%",
+      }}
+    />
+  )}
+</div>
             <a
               href="#services"
               style={{
@@ -144,7 +226,10 @@ export default function Hero() {
                 letterSpacing: "0.15em", textTransform: "uppercase",
                 padding: "1rem 2rem", border: "1px solid var(--border)",
                 color: "var(--muted)", textDecoration: "none",
-                transition: "border-color 0.2s, color 0.2s", display: "inline-block",
+                transition: "border-color 0.2s, color 0.2s", display: "inline-flex",
+                textAlign: "center",
+                justifyContent: "center",
+                alignItems: "center",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.borderColor = "var(--text)";
