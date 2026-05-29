@@ -51,9 +51,9 @@ export default function Process() {
               <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.3rem, 3vw, 2.5rem)", letterSpacing: "0.05em", color: "var(--text)", flex: 1 }}>
                 {step.title}
               </span>
-              <span className="process-step-duration" style={{ fontFamily: "var(--font-mono)", fontSize: "0.65rem", color: "var(--muted)", letterSpacing: "0.1em", marginRight: "1rem" }}>
+              {/* <span className="process-step-duration" style={{ fontFamily: "var(--font-mono)", fontSize: "0.65rem", color: "var(--muted)", letterSpacing: "0.1em", marginRight: "1rem" }}>
                 {step.duration}
-              </span>
+              </span> */}
               <span style={{
                 fontFamily: "var(--font-display)", fontSize: "1.5rem",
                 color: open === i ? "var(--accent)" : "var(--muted)",
