@@ -5,7 +5,7 @@ const services = [
   { num: "01", title: "Web Development", description: "Full-stack web applications built with modern frameworks. From landing pages to complex platforms — fast, accessible, and scalable.", tags: ["Next.js", "React", "Node.js", "PostgreSQL"] },
   { num: "02", title: "Mobile Applications", description: "Cross-platform mobile apps that feel native. We build iOS and Android experiences with React Native and Expo.", tags: ["React Native", "Expo", "Swift", "Kotlin"] },
   { num: "03", title: "AI Integration", description: "Embed intelligence into your product. LLM-powered features, chatbots, automation pipelines, and custom ML solutions.", tags: ["OpenAI", "LangChain", "Python", "Vector DBs"] },
-  { num: "04", title: "API & Backend", description: "Robust APIs and microservices architecture. We design systems that scale with your business, not against it.", tags: ["REST", "GraphQL", "gRPC", "Docker"] },
+  { num: "04", title: "Whatsapp Automations", description: "Automate customer interactions, lead generation, appointment scheduling, follow-ups, and support through intelligent WhatsApp workflows.", tags: ["REST", "GraphQL", "gRPC", "Docker"] },
   { num: "05", title: "UI / UX Design", description: "Design systems and user experiences that convert. We bridge the gap between aesthetics and function.", tags: ["Figma", "Prototyping", "Design Systems", "Research"] },
   { num: "06", title: "Cloud & DevOps", description: "Infrastructure that sleeps so you don't have to. CI/CD pipelines, cloud deployments, and monitoring.", tags: ["AWS", "GCP", "Vercel", "GitHub Actions"] },
 ];
